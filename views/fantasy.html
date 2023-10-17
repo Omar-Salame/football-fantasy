@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" >
+    <title>POK - Football Fantasy</title>
+    <link href="style.css" rel="stylesheet" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat&display=swap" rel="stylesheet">
+    <script src="/server.js"></script>
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo_botola">
+                <a href="/"><img src="images\logo\botolapro.png" alt="Logo Botola Pro1" ></a>
+            </div>
+            
+            <div class="container">
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/wydad-athletic/2yuuwjkA/" target="_blank"><img src="./images/logo/wydad-casablanca.png" alt="wydad-casablanca Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/raja-casablanca/vTnNkCKc/" target="_blank"><img src="images\logo\raja-casablanca.png" alt="raja-casablanca Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/moghreb-tetouan/OWfdXU4T/" target="_blank"><img src="images\logo\matlogo.png" alt="MAT Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/maghreb-fez/ptdhYAkN/" target="_blank"><img src="images\logo\maslogo.png" alt="MAS Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/chabab-mohammedia/vkhbxFLo/" target="_blank"></a><img src="images\logo\sccm.png" alt="Chabab Logo">
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/berkane/Me4oCiMn/" target="_blank"><img src="images\logo\rsb.png" alt="Berkan Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/fus-rabat/zP99MHKe/" target="_blank"><img src="images\logo\fus.png" alt="FUS Logo"></a> 
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/far-rabat/CMn7Clai/" target="_blank"><img src="images\logo\far.png" alt="FAR Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/mouloudia-oujda/tCsOSlDp/" target="_blank"><img src="images\logo\oujda.png" alt="Oujda Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/jeunesse-sportive-soualem/n7cFBVja/" target="_blank"><img src="images\logo\soualem.png" alt="Soualem Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/union-touarga/GKY9yk5c/" target="_blank"><img src="images\logo\touareg.png" alt="Touareg Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/tanger/xUZ5xVki/" target="_blank"><img src="images\logo\irt.png" alt="IRT Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/agadir/04t7zgjb/" target="_blank"><img src="images\logo\hassania-agadir.png" alt="hassania-agadir Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/youssoufia-berrechid/tItrKfYJ/" target="_blank"><img src="images\logo\berrechid.png" alt="DHJ Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/safi/fFoSR8Sj/" target="_blank"><img src="images\logo\olympic-safi.png" alt="olympic-safi Logo"></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.flashscore.fr/equipe/renaissance-zemamra/M50CklHf/" target="_blank"><img src="images\logo\zemamra.png" alt="Zemamra Logo"></a>
+                </div>
+            </div>
+
+            </div>
+            <div class="navigation">
+                <a href="/">Accueil</a>
+                <a href="/ligue">Botola Pro</a>
+                <a href="/fantasy">Fantasy</a>
+                <form class="dec" action="/logout" method="post">
+                    <button>Déconnexion</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="head">
+            <div>
+                <h1>Selection de l'Equipe</h1>
+            </div>
+        </section>
+        <section class="team">
+            <div class="pos">
+                <div class="position-buttons">
+                    <button class="position-button" data-position="GK">Goalkeepers</button>
+                    <button class="position-button" data-position="DEF">Defenders</button>
+                    <button class="position-button" data-position="MID">Midfielders</button>
+                    <button class="position-button" data-position="AT">Attackers</button>
+                </div>
+                <div class="player-list">
+                    <ul class="position GK"></ul>
+                    <ul class="position DEF"></ul>
+                    <ul class="position MID"></ul>
+                    <ul class="position AT"></ul>
+                </div>
+            </div> 
+            <div class="selected">
+                <div class="selected-players">
+                    <h2>Selected Players</h2>
+                    <ul class="selected-players-list">
+                        <!-- Selected players will be added here -->
+                    </ul>
+                </div>
+            </div>
+            
+            <script>
+                const positionButtons = document.querySelectorAll('.position-button');
+                const playerLists = document.querySelectorAll('.position');
+                const selectedPlayersList = document.querySelector('.selected-players-list');
+
+                const playersData = [
+                    { position: 'GK', name: 'Reda Tagnaouti', points: 10 },
+                    { position: 'DEF', name: 'Anas Bach', points: 0 },
+                    { position: 'DEF', name: 'Abdessamad Choukri', points: -2 },
+                    { position: 'DEF', name: 'Abdelouahed Chakhsi', points: 5 },
+                    { position: 'DEF', name: 'Karim El Bounagate', points: 12 },
+                    { position: 'MID', name: 'Reda Jaadi', points: 20 },
+                    { position: 'MID', name: 'Roger Aholou', points: 18 },
+                    { position: 'MID', name: 'Yahya Jabrane', points: 20 },
+                    { position: 'MID', name: 'Ismail Moutaraji', points: 18 },
+                    { position: 'AT', name: 'Zakaria Hadraf', points: 25 },
+                    { position: 'AT', name: 'Muaid Ellafi', points: 22 },
+                ];
+
+                // Function to create player elements
+                function createPlayerElement(playerData) {
+                    const playerElement = document.createElement('li');
+                    playerElement.textContent = `${playerData.position} - ${playerData.name} - Points: ${playerData.points}`;
+                    playerElement.setAttribute('data-position', playerData.position);
+                    playerElement.setAttribute('data-name', playerData.name);
+                    playerElement.setAttribute('data-points', playerData.points);
+
+                    // Add a class to track the selected state
+                    playerElement.classList.add('player');
+
+                    // Add event listener to select/deselect the player
+                    playerElement.addEventListener('click', () => {
+                        if (playerElement.classList.contains('selected')) {
+                            // If player is already selected, deselect it
+                            selectedPlayersList.querySelectorAll('li').forEach(selectedPlayer => {
+                                if (
+                                    selectedPlayer.getAttribute('data-position') === playerData.position &&
+                                    selectedPlayer.getAttribute('data-name') === playerData.name
+                                ) {
+                                    selectedPlayersList.removeChild(selectedPlayer);
+                                }
+                            });
+                            playerElement.classList.remove('selected');
+                            const playerList = playerLists.find(list => list.classList.contains(playerData.position));
+                            playerList.appendChild(playerElement);
+                        } else {
+                            // If player is not selected, add it to the selected players list
+                            const selectedPlayerItem = document.createElement('li');
+                            selectedPlayerItem.textContent = `${playerData.position} - ${playerData.name} - Points: ${playerData.points}`;
+                            selectedPlayersList.appendChild(selectedPlayerItem);
+                            playerElement.classList.add('selected');
+                            playerElement.remove();
+                        }
+                    });
+
+                    return playerElement;
+                }
+
+
+                // Populate the player lists
+                playersData.forEach(playerData => {
+                    const playerElement = createPlayerElement(playerData);
+                    const position = playerData.position;
+                    const playerList = document.querySelector(`.position.${position}`);
+                    if (playerList) {
+                        playerList.appendChild(playerElement);
+                    }
+                });
+
+                // Add event listeners to the position buttons
+                positionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const selectedPosition = button.getAttribute('data-position');
+
+                        // Hide all player lists
+                        const allPlayerLists = document.querySelectorAll('.player-list ul');
+                        allPlayerLists.forEach(list => {
+                            list.style.display = 'none';
+                        });
+
+                        // Show the selected player list
+                        const selectedPlayerList = document.querySelector(`.position.${selectedPosition}`);
+                        if (selectedPlayerList) {
+                            selectedPlayerList.style.display = 'block';
+                        }
+                    });
+                });
+
+            </script>
+        </section>
+        <footer>
+            <img src="images\logo\botolapro.png" alt="Logo Botola Pro1" width="50px" >
+            <div>
+                <a target="_blank" href="https://github.com/Omar-Salame" class="lien-icone">
+                    <img src="images\github-mark.svg" alt="Logo github" width="35px" >
+                </a>
+            </div>
+        </footer>
+    </main>
